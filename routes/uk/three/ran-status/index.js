@@ -1,4 +1,4 @@
-const wrapResponse = require('../../wrapResponse');
+const wrapResponse = require('../../../../wrapResponse');
 
 const threeOutagesRequest = require('./threeOutagesRequest');
 const threeCoverageRequest = require('./threeCoverageRequest');
