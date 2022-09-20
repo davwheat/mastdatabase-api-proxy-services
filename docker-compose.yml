@@ -1,0 +1,14 @@
+version: '3.11'
+
+services:
+  proxy_api:
+    image: node:18-alpine
+
+    environment:
+      PORT: 8082
+
+    working_dir: /app
+    command: sh -c "yarn install --immutable && yarn start"
+
+    volumes:
+      - ./:/app
