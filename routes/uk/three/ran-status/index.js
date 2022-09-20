@@ -36,9 +36,6 @@ module.exports = async function (fastify, opts) {
     handler: async function (request, reply) {
       const { postcode, endpoint } = request.query;
 
-      console.log(handlers, endpoint);
-      console.log(handlers[endpoint]);
-
       const data = await handlers[endpoint](postcode);
 
       reply.send(wrapResponse(data));
