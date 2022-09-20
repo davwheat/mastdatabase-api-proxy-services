@@ -1,0 +1,33 @@
+{
+  "name": "mastdatabase-api-proxy-services",
+  "version": "1.0.0",
+  "description": "This project was bootstrapped with Fastify-CLI.",
+  "main": "app.js",
+  "prettier": "@flarum/prettier-config",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "tap \"test/**/*.test.js\"",
+    "start": "fastify start -l info app.js",
+    "dev": "fastify start -w -l info -P app.js",
+    "format": "prettier --write .",
+    "format-check": "prettier --check ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@fastify/autoload": "^5.4.0",
+    "@fastify/sensible": "^5.1.1",
+    "@flarum/prettier-config": "^1.0.0",
+    "fastify": "^4.6.0",
+    "fastify-cli": "^5.4.2",
+    "fastify-plugin": "^4.2.1",
+    "node-fetch-commonjs": "^3.1.1"
+  },
+  "devDependencies": {
+    "prettier": "^2.7.1",
+    "tap": "^16.3.0"
+  }
+}

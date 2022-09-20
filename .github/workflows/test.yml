@@ -1,0 +1,51 @@
+name: Smoketest
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+
+jobs:
+  format_check:
+    runs-on: ubuntu-latest
+    name: Check formatting
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: |
+          yarn install --immutable
+
+      - name: Check formatting
+        run: |
+          yarn format-check
+
+  tests:
+    runs-on: ubuntu-latest
+    name: Run tests
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: |
+          yarn install --immutable
+
+      - name: Build library
+        run: |
+          yarn test
