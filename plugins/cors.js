@@ -8,7 +8,5 @@ const fp = require('fastify-plugin');
  * @see https://github.com/fastify/fastify-sensible
  */
 module.exports = fp(async function (fastify, opts) {
-  fastify.register(require('@fastify/cors'), {
-    origin: false,
-  });
+  fastify.register(require('@fastify/cors'));
 });
