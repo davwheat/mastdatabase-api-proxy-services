@@ -1,6 +1,6 @@
-const { default: fetch } = require('node-fetch-commonjs');
+import fetch from 'node-fetch';
 
-module.exports = async function threeHbbRequest(postcode) {
+export default async function threeHbbRequest(postcode: string) {
   const params = new URLSearchParams({
     Postcode: postcode,
     // content: 'true',
@@ -13,4 +13,4 @@ module.exports = async function threeHbbRequest(postcode) {
   });
 
   return await data.json();
-};
+}

@@ -1,6 +1,6 @@
-const { default: fetch } = require('node-fetch-commonjs');
+import fetch from 'node-fetch';
 
-module.exports = async function threeOutagesRequest(postcode) {
+export default async function threeOutagesRequest(postcode: string) {
   const params = new URLSearchParams({
     postcode,
     content: 'true',
@@ -13,4 +13,4 @@ module.exports = async function threeOutagesRequest(postcode) {
   });
 
   return await data.json();
-};
+}

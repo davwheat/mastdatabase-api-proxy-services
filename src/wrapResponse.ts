@@ -1,4 +1,7 @@
-module.exports = function wrapResponse(response, metadata = { ok: true }) {
+export default function wrapResponse(
+  response: string | null | boolean | any[] | Record<string, unknown>,
+  metadata: Record<string, unknown> = { ok: true }
+) {
   return {
     info: [
       'This service is provided free-of-charge (for now), courtesy of dav.network.',
@@ -9,4 +12,4 @@ module.exports = function wrapResponse(response, metadata = { ok: true }) {
     ...metadata,
     data: response,
   };
-};
+}

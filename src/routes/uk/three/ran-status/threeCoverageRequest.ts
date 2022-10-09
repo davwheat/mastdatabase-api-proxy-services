@@ -1,6 +1,6 @@
-const { default: fetch } = require('node-fetch-commonjs');
+import fetch from 'node-fetch';
 
-module.exports = async function threeCoverageRequest(postcode) {
+export default async function threeCoverageRequest(postcode: string) {
   const params = new URLSearchParams({
     postcode,
     content: 'true',
