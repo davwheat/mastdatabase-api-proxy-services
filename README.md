@@ -130,6 +130,69 @@ GET https://proxies.mastdatabase.co.uk/uk/o2/coverage-map/sites?lat=50.829002663
 | `lat`     | Longitude to find sites around. | Yes      |
 | `lon`     | Latitude to find sites around.  | Yes      |
 
+### `/uk/three/coverage-map/tiles`
+
+#### Notes
+
+- The `i` parameter needs to be calculated with some maths. See below for Javascript code to do so, designed for use primarily with Leaflet:
+
+```js
+interface IViewData {
+  bbox: L.BoundsExpression
+  width: number
+  height: number
+  zoom: number
+  tile: {
+    row: number
+    column: number
+  }
+  subdomain: string
+}
+
+(view: IViewData) => {
+  let { column: x, row: y } = view.tile
+
+  const i = (1 << tileZoomLevel) - y - 1
+
+  if (x >= x1 && x <= x2 && i >= i1 && i <= i2) {
+    const qs = new URLSearchParams({
+      layer: layerName,
+      zoom: tileZoomLevel.toString(),
+      x: x.toString(),
+      i: i.toString(),
+    })
+
+    return `https://proxies.mastdatabase.co.uk/uk/three/coverage-map/tiles?${qs.toString()}`
+  } else {
+    // 256x256 transparent png
+    return `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAAACYElEQVR42u3UMQEAAAjDsKEc6WAAByQSerSS6QAvlQGAAQAGABgAYACAAQAGABgAYACAAQAGABgAYACAAQAGABgAYACAAQAGABgAYACAAQAGABgAYACAAQAGABgAYACAAQAGABgAYACAAQAGABgAYABgAAYABgAYAGAAgAEABgAYAGAAgAEABgAYAGAAgAEABgAYAGAAgAEABgAYAGAAgAEABgAYAGAAgAEABgAYAGAAgAEABgAYAGAAgAEABgAYAGAAgAGAARgAGABgAIABAAYAGABgAIABAAYAGABgAIABAAYAGABgAIABAAYAGABgAIABAAYAGABgAIABAAYAGABgAIABAAYAGABgAIABAAYAGABgAIABAAYABmAAYACAAQAGABgAYACAAQAGABgAYACAAQAGABgAYACAAQAGABgAYACAAQAGABgAYACAAQAGABgAYACAAQAGABgAYACAAQAGABgAYACAAQAGABgAGIAMYACAAQAGABgAYACAAQAGABgAYACAAQAGABgAYACAAQAGABgAYACAAQAGABgAYACAAQAGABgAYACAAQAGABgAYACAAQAGABgAYACAAQAGABgAGABgAIABAAYAGABgAIABAAYAGABgAIABAAYAGABgAIABAAYAGABgAIABAAYAGABgAIABAAYAGABgAIABAAYAGABgAIABAAYAGABgAIABAAYAGAAYAGAAgAEABgAYAGAAgAEABgAYAGAAgAEABgAYAGAAgAEABgAYAGAAgAEABgAYAGAAgAEABgAYAGAAgAEABgAYAGAAgAEABgAYAHBZZDZ/EE/DfHIAAAAASUVORK5CYII=`
+  }
+}
+```
+
+#### Example
+
+<details>
+<summary>Example HTTP request</summary>
+
+```
+
+GET https://proxies.mastdatabase.co.uk/uk/three/coverage-map/tiles?layer=FiveG&zoom=14&x=8137&i=10885 HTTP/2.0
+
+<Binary PNG data>
+```
+
+</details>
+
+#### Query parameters
+
+| Parameter | Description                                         | Required |
+| --------- | --------------------------------------------------- | -------- |
+| `layer`   | Map layer to pull from (`FiveG`/`4G`/`800`/`Fast`). | Yes      |
+| `zoom`    | Map zoom level (`9`/`12`/`14`).                     | Yes      |
+| `x`       | Map x-position                                      | Yes      |
+| `i`       | Map y-position (complex)                            | Yes      |
+
 ### `/uk/three/ran-status`
 
 #### Notes
@@ -181,3 +244,7 @@ GET https://proxies.mastdatabase.co.uk/uk/three/ran-status?postcode=SW1A%201AA&e
 | ---------- | ----------------------------------------------------------------------------------- | -------- |
 | `postcode` | Postcode to check against. For spaces, provide a space, or `%20`. `+` is not valid. | Yes      |
 | `endpoint` | Three UK API endpoint to check. One of `outages`, `coverage` or `hbb`.              | Yes      |
+
+```
+
+```
