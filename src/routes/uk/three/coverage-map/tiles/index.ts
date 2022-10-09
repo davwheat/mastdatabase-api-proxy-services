@@ -10,6 +10,7 @@ const QSType = {
   properties: {
     layer: {
       type: 'string',
+      enum: ['FiveG', 'LTE', '800', 'Fast'],
     },
     zoom: {
       type: 'number',

@@ -186,12 +186,12 @@ GET https://proxies.mastdatabase.co.uk/uk/three/coverage-map/tiles?layer=FiveG&z
 
 #### Query parameters
 
-| Parameter | Description                                         | Required |
-| --------- | --------------------------------------------------- | -------- |
-| `layer`   | Map layer to pull from (`FiveG`/`4G`/`800`/`Fast`). | Yes      |
-| `zoom`    | Map zoom level (`9`/`12`/`14`).                     | Yes      |
-| `x`       | Map x-position                                      | Yes      |
-| `i`       | Map y-position (complex)                            | Yes      |
+| Parameter | Description                                          | Required |
+| --------- | ---------------------------------------------------- | -------- |
+| `layer`   | Map layer to pull from (`FiveG`/`LTE`/`800`/`Fast`). | Yes      |
+| `zoom`    | Map zoom level (`9`/`12`/`14`).                      | Yes      |
+| `x`       | Map x-position                                       | Yes      |
+| `i`       | Map y-position (complex)                             | Yes      |
 
 ### `/uk/three/ran-status`
 
