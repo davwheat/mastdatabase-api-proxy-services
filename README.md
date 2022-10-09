@@ -149,7 +149,7 @@ interface IViewData {
   subdomain: string
 }
 
-(view: IViewData) => {
+function getTileUri(view: IViewData) {
   let { column: x, row: y } = view.tile
 
   const i = (1 << tileZoomLevel) - y - 1
