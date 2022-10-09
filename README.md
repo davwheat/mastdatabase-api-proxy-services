@@ -8,13 +8,135 @@ A variety of proxies, which allow you to fetch data from various mobile networks
 
 ## Endpoints
 
+### `/uk/o2/coverage-map/sites`
+
+#### Example
+
+<details>
+<summary>Example HTTP request</summary>
+
+```
+GET https://proxies.mastdatabase.co.uk/uk/o2/coverage-map/sites?lat=50.8290026634407&lon=-0.1409800773142767 HTTP/2.0
+
+{
+  "info": [
+    "This service is provided free-of-charge (for now), courtesy of dav.network.",
+    "If you use this a lot, please consider supporting me: https://github.com/sponsors/davwheat",
+    "Documenation is found at https://github.com/davwheat/mastdatabase-api-proxy-services#readme",
+    "Anyway, the raw data from the API you wanted is found below! Enjoy!"
+  ],
+  "ok": true,
+  "data": {
+    "customer": "68AA7B45",
+    "raster_values": [
+      {
+        "layer": 0,
+        "raw": -72,
+        "cat": 1
+      },
+      {
+        "layer": 1,
+        "raw": -94,
+        "cat": 2
+      },
+      {
+        "layer": 2,
+        "raw": -80,
+        "cat": 1
+      }
+    ],
+    "total": 29,
+    "avg_distance": 587.6543156399999,
+    "grid_srs": 900913,
+    "search_point": {
+      "geojson": {
+        "type": "Point",
+        "coordinates": [
+          -0.133479,
+          50.961951
+        ]
+      },
+      "point": {
+        "lon": -0.133479,
+        "lat": 50.961951
+      },
+      "point_grid": {
+        "x": -14858,
+        "y": 6614566,
+        "srs": 900913
+      }
+    },
+    "search_results": [],
+    "records": [
+      {
+        "counter": 1,
+        "id": "1668930",
+        "point": {
+          "lon": -0.1334716849144785,
+          "lat": 50.996626435877374
+        },
+        "point_grid": {
+          "x": -14858,
+          "y": 6620697
+        },
+        "distance": {
+          "miles": 0.03885,
+          "km": 0.06216000000000001
+        }
+      },
+      {
+        "counter": 2,
+        "id": "1076714",
+        "point": {
+          "lon": -0.11657750716227708,
+          "lat": 50.984763867269876
+        },
+        "point_grid": {
+          "x": -12977.348735253887,
+          "y": 6618599.069652313
+        },
+        "distance": {
+          "miles": 0.01311,
+          "km": 0.020976
+        }
+      },
+      {
+        "counter": 3,
+        "id": "1891576",
+        "point": {
+          "lon": -0.08924432094756422,
+          "lat": 50.985318781758714
+        },
+        "point_grid": {
+          "x": -9934.632364074329,
+          "y": 6618697.195967455
+        },
+        "distance": {
+          "miles": 0.04207,
+          "km": 0.06731200000000001
+        }
+      }
+    ]
+  }
+}
+```
+
+</details>
+
+#### Query parameters
+
+| Parameter | Description                     | Required |
+| --------- | ------------------------------- | -------- |
+| `lat`     | Longitude to find sites around. | Yes      |
+| `lon`     | Latitude to find sites around.  | Yes      |
+
 ### `/uk/three/ran-status`
 
-### Notes
+#### Notes
 
 - We have no idea what the `endpointFlags` are. They seem to be a letter, then 1-9.
 
-### Example
+#### Example
 
 <details>
 <summary>Example HTTP request</summary>
@@ -26,6 +148,7 @@ GET https://proxies.mastdatabase.co.uk/uk/three/ran-status?postcode=SW1A%201AA&e
   "info": [
     "This service is provided free-of-charge (for now), courtesy of dav.network.",
     "If you use this a lot, please consider supporting me: https://github.com/sponsors/davwheat",
+    "Documenation is found at https://github.com/davwheat/mastdatabase-api-proxy-services#readme",
     "Anyway, the raw data from the API you wanted is found below! Enjoy!"
   ],
   "ok": true,
@@ -52,7 +175,7 @@ GET https://proxies.mastdatabase.co.uk/uk/three/ran-status?postcode=SW1A%201AA&e
 
 </details>
 
-### Query parameters
+#### Query parameters
 
 | Parameter  | Description                                                                         | Required |
 | ---------- | ----------------------------------------------------------------------------------- | -------- |
