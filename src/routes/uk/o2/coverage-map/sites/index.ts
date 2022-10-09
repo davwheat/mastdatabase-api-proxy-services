@@ -140,23 +140,13 @@ declare module SpatialBuzzResponse {
   export interface PointGrid {
     x: number;
     y: number;
-    srs: number;
+    srs?: number;
   }
 
   export interface SearchPoint {
     geojson: Geojson;
     point: Point;
     point_grid: PointGrid;
-  }
-
-  export interface Point2 {
-    lon: number;
-    lat: number;
-  }
-
-  export interface PointGrid2 {
-    x: number;
-    y: number;
   }
 
   export interface Distance {
@@ -167,8 +157,8 @@ declare module SpatialBuzzResponse {
   export interface Record {
     counter: number;
     id: string;
-    point: Point2;
-    point_grid: PointGrid2;
+    point: Point;
+    point_grid: PointGrid;
     distance: Distance;
   }
 
