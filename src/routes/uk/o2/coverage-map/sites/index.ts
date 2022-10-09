@@ -52,8 +52,6 @@ export default async function (fastify: FastifyInstance, opts?: FastifyServerOpt
 
       const data: SpatialBuzzResponse.RootObject = (await response.json()) as SpatialBuzzResponse.RootObject;
 
-      console.log(data);
-
       reply.send(wrapResponse(data as any as Record<string, unknown>));
     },
   });
@@ -66,8 +64,6 @@ async function getSpatialTokens(): Promise<string[]> {
 
   const resp = await fetch(uri);
   const data = await resp.json();
-
-  console.log(data);
 
   spatialTokens = (data as { tokens: string[] }).tokens;
 
@@ -95,7 +91,7 @@ async function spatialBuzzAuthedUrl(url: string, apiNum: number): Promise<string
   const challengeInput = ':::' + prefix + ':::' + spatialConfig.customer + ':::' + spatialConfig.subCustomer + ':::';
   const challenge = spatialBuzzCrc32(challengeInput);
 
-  return uri + ':::' + challenge + '?NoCache=' + uuidv4();
+  return uri + ':::' + challenge + '?uuid=d35958f254494283836e4dac0094be7d&browser_uuid=03cf12d0ba3f4f7da133c409a3ec93e2&NoCache=' + uuidv4();
 }
 
 function spatialBuzzCrc32(str: string, crc?: number) {
