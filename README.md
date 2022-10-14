@@ -1,5 +1,7 @@
 # mastdatabase.co.uk proxy services
 
+![](https://status.davw.network/api/v1/endpoints/apis_mastdatabase-co-uk-proxies/uptimes/7d/badge.svg) ![](https://status.davw.network/api/v1/endpoints/apis_mastdatabase-co-uk-proxies/response-times/7d/badge.svg) ![](https://status.davw.network/api/v1/endpoints/apis_mastdatabase-co-uk-proxies/health/badge.svg)
+
 A variety of proxies, which allow you to fetch data from various mobile networks without setting up your own backend API service.
 
 > Please don't abuse these. I don't want to have to update them if a network implements more stringent request validation, nor do I want my cheap VPS overloaded. Thanks.
