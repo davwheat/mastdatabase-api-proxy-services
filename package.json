@@ -16,19 +16,19 @@
   "author": "David Wheatley <david@davwheat.dev> (https://davwheat.dev)",
   "license": "MIT",
   "dependencies": {
-    "@fastify/autoload": "^5.4.0",
+    "@fastify/autoload": "^5.4.1",
     "@fastify/cors": "^8.1.0",
     "@fastify/sensible": "^5.1.1",
     "@flarum/prettier-config": "^1.0.0",
-    "fastify": "^4.7.0",
+    "fastify": "^4.8.1",
     "fastify-cli": "^5.5.0",
-    "fastify-plugin": "^4.2.1",
+    "fastify-plugin": "^4.3.0",
     "node-fetch": "^3.2.10",
     "ts-node": "^10.9.1",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "@types/node": "^18.8.3",
+    "@types/node": "^18.8.5",
     "@types/uuid": "^8.3.4",
     "json-schema-to-ts": "^2.5.5",
     "nodemon": "^2.0.20",
