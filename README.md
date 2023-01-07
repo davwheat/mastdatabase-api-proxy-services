@@ -10,7 +10,9 @@ A variety of proxies, which allow you to fetch data from various mobile networks
 
 ## Endpoints
 
-### `/uk/o2/coverage-map/sites`
+**Some endpoints are not documented here.**
+
+<!-- ### `/uk/o2/coverage-map/sites`
 
 #### Example
 
@@ -130,9 +132,15 @@ GET https://proxies.mastdatabase.co.uk/uk/o2/coverage-map/sites?lat=50.829002663
 | Parameter | Description                     | Required |
 | --------- | ------------------------------- | -------- |
 | `lat`     | Longitude to find sites around. | Yes      |
-| `lon`     | Latitude to find sites around.  | Yes      |
+| `lon`     | Latitude to find sites around.  | Yes      | -->
 
 ### `/uk/three/coverage-map/tiles`
+
+> ⚠️ Warning
+>
+> This has been superceded by my tiles server: `https://234-20.coveragetiles.com/{version}/{layer}/{z}/{x}/{y}.png`
+>
+> Version is `2022-11-15` (latest as of Jan 2023). Layer is one of: `3g`, `4g`, `4g_volte` or `5g`.
 
 #### Notes
 
