@@ -13,4 +13,4 @@ export default async function threeCoverageRequest(postcode: string) {
   });
 
   return await data.json();
-};
+}
