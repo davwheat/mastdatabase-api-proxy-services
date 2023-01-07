@@ -5,10 +5,10 @@ import { dirname, join } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-import type { FastifyInstance, FastifyServerOptions } from 'fastify';
+import type { FastifyInstance, FastifyPluginOptions, FastifyServerOptions } from 'fastify';
 
 // Pass --options via CLI arguments in command to enable these options.
-export const options = {};
+export const options: FastifyPluginOptions = {};
 
 export default async function (fastify: FastifyInstance, opts?: FastifyServerOptions) {
   // Place here your custom code!

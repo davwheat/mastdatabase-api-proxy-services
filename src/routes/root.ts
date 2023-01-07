@@ -1,4 +1,4 @@
-import wrapResponse from '../wrapResponse';
+import wrapResponse from '../wrapResponse.js';
 
 import type { FastifyInstance, FastifyServerOptions } from 'fastify';
 
