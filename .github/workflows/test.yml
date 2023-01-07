@@ -46,6 +46,10 @@ jobs:
         run: |
           yarn install --immutable
 
+      - name: Transpile Typescript
+        run: |
+          yarn build
+
       - name: Run tests
         run: |
           yarn test
