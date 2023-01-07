@@ -1,4 +1,5 @@
 import fetch from 'node-fetch';
+import { getResponsibleProxyHeaders } from '../../../../utils.js';
 
 import type { FastifyInstance, FastifyServerOptions } from 'fastify';
 import type { FromSchema } from 'json-schema-to-ts';
@@ -32,13 +33,7 @@ export default async function (fastify: FastifyInstance, opts?: FastifyServerOpt
       uri.searchParams.append('lon', lon.toString());
 
       const response = await fetch(uri.toString(), {
-        headers: {
-          'User-Agent': 'mastdatabase.co.uk proxy',
-          'X-Abuse-Contact': 'david@davwheat.dev',
-          'X-Forwarded-For': request.ip,
-          'X-Upstream-User-Agent': request.headers['user-agent'] ?? 'not provided',
-          'X-Upstream-Referer': request.headers.referer ?? 'not provided',
-        },
+        headers: getResponsibleProxyHeaders(request),
       });
 
       const data = await response.arrayBuffer();
