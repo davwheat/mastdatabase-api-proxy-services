@@ -7,6 +7,9 @@ services:
     environment:
       PORT: 8082
 
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
     working_dir: /app
     command: sh -c "yarn install --immutable && yarn start"
 

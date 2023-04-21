@@ -27,7 +27,7 @@ export default async function (fastify: FastifyInstance, opts?: FastifyServerOpt
     handler: async function (request, reply) {
       const { lat, lon } = request.query;
 
-      const uri = new URL('http://127.0.0.1:8086/');
+      const uri = new URL('http://host.docker.internal:8086/');
 
       uri.searchParams.append('lat', lat.toString());
       uri.searchParams.append('lon', lon.toString());
