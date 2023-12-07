@@ -11,33 +11,33 @@
     "build": "yarn clean && tsc -p tsconfig.json",
     "watch": "yarn clean && tsc -w -p tsconfig.json",
     "start": "ts-node --esm --transpile-only src/server",
-    "dev": "nodemon src/server",
+    "dev": "FASTIFY_AUTOLOAD_TYPESCRIPT=1 nodemon src/server",
     "format": "prettier --write .",
     "format-check": "prettier --check ."
   },
   "author": "David Wheatley <david@davwheat.dev> (https://davwheat.dev)",
   "license": "MIT",
   "dependencies": {
-    "@fastify/autoload": "^5.7.1",
-    "@fastify/cors": "^8.2.1",
-    "@fastify/sensible": "^5.2.0",
+    "@fastify/autoload": "^5.8.0",
+    "@fastify/cors": "^8.4.2",
+    "@fastify/sensible": "^5.5.0",
     "@flarum/prettier-config": "^1.0.0",
-    "fastify": "^4.15.0",
-    "fastify-cli": "^5.7.1",
-    "fastify-plugin": "^4.5.0",
-    "node-fetch": "^3.3.1",
+    "fastify": "^4.24.3",
+    "fastify-cli": "^5.9.0",
+    "fastify-plugin": "^4.5.1",
+    "node-fetch": "^3.3.2",
     "ts-node": "^10.9.1",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "@types/node": "^18.15.12",
-    "@types/uuid": "^9.0.1",
-    "json-schema-to-ts": "^2.8.0",
+    "@types/node": "^20.10.4",
+    "@types/uuid": "^9.0.7",
+    "json-schema-to-ts": "^2.9.2",
     "nodemon": "^2.0.22",
-    "prettier": "^2.8.7",
+    "prettier": "^3.1.0",
     "rimraf": "^3.0.2",
-    "tap": "^16.3.4",
-    "typescript": "^5.0.4"
+    "tap": "^16.3.9",
+    "typescript": "^5.3.3"
   },
-  "packageManager": "yarn@3.5.0"
+  "packageManager": "yarn@4.0.2"
 }
