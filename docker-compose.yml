@@ -3,7 +3,7 @@ version: '3.11'
 services:
   proxy_api:
     image: node:20-alpine
-    restart: unless-stopped
+    restart: always
     environment:
       PORT: 8082
 
