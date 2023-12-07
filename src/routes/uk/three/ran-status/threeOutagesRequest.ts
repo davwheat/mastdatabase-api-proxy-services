@@ -23,7 +23,7 @@ export default async function threeOutagesRequest(postcode: string) {
     method: 'POST',
     body: JSON.stringify({
       location: { postcode, latitude, longitude, precisionLocation: 'APPROXIMATE' },
-      ClientID: 'STATUSCHECKER',
+      ClientID: 'COVERAGECHECKER',
     }),
     headers: {
       Accept: '*/*',
