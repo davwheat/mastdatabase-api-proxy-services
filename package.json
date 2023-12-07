@@ -10,7 +10,7 @@
     "clean": "rimraf ./lib",
     "build": "yarn clean && tsc -p tsconfig.json",
     "watch": "yarn clean && tsc -w -p tsconfig.json",
-    "start": "ts-node --esm --transpile-only src/server",
+    "start": "FASTIFY_AUTOLOAD_TYPESCRIPT=1 node --loader ts-node/esm ./src/server.ts",
     "dev": "FASTIFY_AUTOLOAD_TYPESCRIPT=1 nodemon src/server",
     "format": "prettier --write .",
     "format-check": "prettier --check ."
