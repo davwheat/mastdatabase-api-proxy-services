@@ -1,6 +1,11 @@
 import fetch from 'node-fetch';
 
-export default async function threeOutagesRequest(postcode: string) {
+export enum ThreeClient {
+  CoverageChecker = 'COVERAGECHECKER',
+  StatusChecker = 'STATUSCHECKER',
+}
+
+export default async function threeOutagesRequest(postcode: string, client: ThreeClient) {
   const locationData = await fetch(`https://api.postcodes.io/postcodes/${encodeURIComponent(postcode)}`, {
     headers: {
       'User-Agent': `mastdatabase.co.uk backend (contact: david@mastdatabase.co.uk)`,
@@ -23,7 +28,7 @@ export default async function threeOutagesRequest(postcode: string) {
     method: 'POST',
     body: JSON.stringify({
       location: { postcode, latitude, longitude, precisionLocation: 'APPROXIMATE' },
-      ClientID: 'COVERAGECHECKER',
+      ClientID: client.toString(),
     }),
     headers: {
       Accept: '*/*',

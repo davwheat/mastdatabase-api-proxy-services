@@ -1,6 +1,6 @@
 import wrapResponse from '../../../../wrapResponse.js';
 
-import threeOutagesRequest from './threeOutagesRequest.js';
+import threeOutagesRequest, { ThreeClient } from './threeOutagesRequest.js';
 
 import type { FastifyInstance, FastifyServerOptions } from 'fastify';
 import type { FromSchema } from 'json-schema-to-ts';
@@ -13,6 +13,11 @@ const QSType = {
       type: 'string',
       minLength: 1,
       maxLength: 16,
+    },
+    client: {
+      type: 'string',
+      enum: ['status', 'coverage'],
+      default: 'coverage',
     },
   },
 } as const;
@@ -27,7 +32,22 @@ export default async function (fastify: FastifyInstance, opts?: FastifyServerOpt
     handler: async function (request, reply) {
       const { postcode } = request.query;
 
-      const data: any = await threeOutagesRequest(postcode);
+      let client: ThreeClient;
+
+      switch (request.query.client) {
+        case 'coverage':
+          client = ThreeClient.CoverageChecker;
+          break;
+        case 'status':
+          client = ThreeClient.StatusChecker;
+          break;
+        default:
+          return {
+            error: 'Invalid client',
+          };
+      }
+
+      const data: any = await threeOutagesRequest(postcode, client);
 
       reply.send(wrapResponse(data));
     },
