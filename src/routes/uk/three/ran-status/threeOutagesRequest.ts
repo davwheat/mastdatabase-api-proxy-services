@@ -5,7 +5,17 @@ export enum ThreeClient {
   StatusChecker = 'STATUSCHECKER',
 }
 
-export default async function threeOutagesRequest(postcode: string, client: ThreeClient) {
+export async function postcodeToLatLong(postcode: string): Promise<
+  | {
+      error: true;
+      response: {
+        status: number;
+        statusText: string;
+        text: string;
+      };
+    }
+  | { latitude: number; longitude: number }
+> {
   const locationData = await fetch(`https://api.postcodes.io/postcodes/${encodeURIComponent(postcode)}`, {
     headers: {
       'User-Agent': `mastdatabase.co.uk backend (contact: david@mastdatabase.co.uk)`,
@@ -14,9 +24,12 @@ export default async function threeOutagesRequest(postcode: string, client: Thre
 
   if (!locationData.ok) {
     return {
-      error: 'Unknown postcode or error fetching location information',
-      detail: `${locationData.status} ${locationData.statusText}`,
-      upstreamBody: await locationData.text(),
+      error: true,
+      response: {
+        status: locationData.status,
+        statusText: locationData.statusText,
+        text: await locationData.text(),
+      },
     };
   }
 
@@ -24,6 +37,10 @@ export default async function threeOutagesRequest(postcode: string, client: Thre
 
   const { latitude, longitude } = locationDataResponse.result;
 
+  return { latitude, longitude };
+}
+
+export default async function threeOutagesRequest(latitude: number, longitude: number, client: ThreeClient, postcode: string = 'SW1A 1AA') {
   const data = await fetch(`https://www.three.co.uk/bin/threedigital/rigview`, {
     method: 'POST',
     body: JSON.stringify({
