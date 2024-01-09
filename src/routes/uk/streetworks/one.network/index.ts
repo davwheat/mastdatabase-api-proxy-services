@@ -41,7 +41,7 @@ export default async function (fastify: FastifyInstance, opts?: FastifyServerOpt
 
       reply
         .status(response.status)
-        .headers({ 'Content-Type': response.headers.get('Content-Type') })
+        .headers({ 'Content-Type': response.headers.get('Content-Type')! })
         .send(buffer);
     },
   });
