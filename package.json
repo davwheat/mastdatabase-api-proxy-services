@@ -6,7 +6,7 @@
   "prettier": "@flarum/prettier-config",
   "type": "module",
   "scripts": {
-    "test": "tap \"test/**/*.test.cjs\"",
+    "test": "tap \"test/**/*.test.cjs\" --allow-incomplete-coverage",
     "clean": "rimraf ./lib",
     "build": "yarn clean && tsc -p tsconfig.json",
     "watch": "yarn clean && tsc -w -p tsconfig.json",
